@@ -65,7 +65,68 @@ bot.on('callback_query', (query) => {
 
 
     }else if(data === 'subscriptions') {
-        bot.sendMessage(chatId, 'This is the subscription section')
+
+        // PLAN ONE
+        const planOne = `
+        $144
+        \n 15,000 TETHER, you get 15,000 USDT daily on the software
+        \nValidity: 24 hours
+        `
+        const planOneButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Proceed', callback_data: 'planOneProceed'}]
+                ]
+            })
+        }
+
+        // PLAN TWO
+        const planTwo = `
+        $222
+        \n 5,000 TETHER, you get 5,000 USDT daily on the software
+        \nValidity: 60 days
+        `
+        const planTwoButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Proceed', callback_data: 'planTwoProceed'}]
+                ]
+            })
+        }
+
+        // PLAN THREE
+        const planThree = `
+        $322
+        \n 10,000 TETHER, you get 10,000 USDT daily on the software
+        \nValidity: 60 days
+        `
+        const planThreeButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Proceed', callback_data: 'planThreeProceed'}]
+                ]
+            })
+        }
+
+        // PLAN FOUR
+        const planFour = `
+        $722
+        \n 50,000 TETHER, you get 50,000 USDT daily on the software
+        \nValidity: 60 days
+        `
+        const planFourButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Proceed', callback_data: 'planFourProceed'}]
+                ]
+            })
+        }
+
+        bot.sendMessage(chatId, planOne, planOneButton)
+        bot.sendMessage(chatId, planTwo, planTwoButton)
+        bot.sendMessage(chatId, planThree, planThreeButton)
+        bot.sendMessage(chatId, planFour, planFourButton)
+
     }else if(data === 'trialVersion') {
 
         const trialVersionMessage = `
@@ -90,6 +151,73 @@ bot.on('callback_query', (query) => {
         \nQ: What are the benefit of using USDT flash?
         \nA: A USDT flasher allows a rapid transaction and an increased liquidity. It ensures high security and anonymity making it a valuable tool for quick and efficient cryptocurrency trading.
         `
-        bot.sendMessage(chatId, askedQuestions)
+        const askedQuestionsButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Ask Other Questions❓', url: 'https://t.me/tlafiles' }]
+                ]
+            })
+        }
+        bot.sendMessage(chatId, askedQuestions, askedQuestionsButton)
+    }else if(data === 'planOneProceed'){
+        const proceedOne = `
+        Please make a payment of $144 to
+        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        \nAfter payment, Please Confirm Below.
+        `
+        const proButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Confirm Payment', url: 'https://t.me/tlafiles' }]
+                ]
+            })
+        }
+
+        bot.sendMessage(chatId, proceedOne, proButton)
+    }else if(data === 'planTwoProceed'){
+        const proceedTwo = `
+        Please make a payment of $222 to
+        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        \nAfter payment, Please Confirm Below.
+        `
+        const proButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Confirm Payment', url: 'https://t.me/tlafiles' }]
+                ]
+            })
+        }
+
+        bot.sendMessage(chatId, proceedTwo, proButton)
+    }else if(data === 'planThreeProceed'){
+        const proceedThree = `
+        Please make a payment of $322 to
+        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        \nAfter payment, Please Confirm Below.
+        `
+        const proButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Confirm Payment', url: 'https://t.me/tlafiles' }]
+                ]
+            })
+        }
+
+        bot.sendMessage(chatId, proceedThree, proButton)
+    }else if(data === 'planFourProceed'){
+        const proceedFour = `
+        Please make a payment of $722 to
+        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        \nAfter payment, Please Confirm Below.
+        `
+        const proButton = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Confirm Payment', url: 'https://t.me/tlafiles' }]
+                ]
+            })
+        }
+
+        bot.sendMessage(chatId, proceedFour, proButton)
     }
 })
