@@ -1,6 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api')
 const env = require('dotenv')
-// const express = require('express')
+const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
 
 
 env.config()
@@ -220,4 +222,8 @@ bot.on('callback_query', (query) => {
 
         bot.sendMessage(chatId, proceedFour, proButton)
     }
+})
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
 })
