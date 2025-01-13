@@ -25,7 +25,7 @@ bot.onText(/\/start/, (msg) => {
         })
     }
 
-    bot.sendMessage(chatId, 'Welcome to TLAUST Bot', options)
+    bot.sendMessage(chatId, 'Welcome to TLA USDT and BTC Bot 💙', options)
 })
 
 // THE HELP FUNCTION
