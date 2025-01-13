@@ -76,5 +76,20 @@ bot.on('callback_query', (query) => {
         \nThis Demo is limited to sending 3 USDT per day.
         `
             bot.sendMessage(chatId, trialVersionMessage)
+    }else if(data === 'askedQuestions') {
+        const askedQuestions = `
+        FAQs:
+        \nQ: What is USDT?
+        \nA: USDT is a stablecoin that is pegged to the US dollar.
+        \nQ: Is USDT flash transferrable?
+        \nA: Yes 😊, you can transfer to any wallet using your preferred network. ERC20, BEP20 or TRC20..
+        \nQ: Can it be used for P2P?
+        \nA: Yes 😊, it is certainly the most recommended practice. You can also do bridges, swaps and transfer whatever you want.
+        \nQ: Is there an expiration date for the flashed value?
+        \nA: Yes 😊, each flash sent is valid for 190 days after the first transfer.
+        \nQ: What are the benefit of using USDT flash?
+        \nA: A USDT flasher allows a rapid transaction and an increased liquidity. It ensures high security and anonymity making it a valuable tool for quick and efficient cryptocurrency trading.
+        `
+        bot.sendMessage(chatId, askedQuestions)
     }
 })
