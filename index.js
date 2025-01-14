@@ -242,12 +242,84 @@ bot.on('message', (msg) => {
             if (messageText.includes(botUsername)) {
                 if (messageText.toLowerCase().includes('hi')) {
                     bot.sendMessage(chatId, 'Hello, Welcome to TLA USDT and BTC Bot 💙');
+                }else if(messageText.toLocaleLowerCase().includes('help')) {
+                    bot.sendMessage(chatId, 'How can I assist you?');
+                }else if(messageText.toLocaleLowerCase().includes('begin')) {
+                    bot.sendMessage(chatId, 'I am sorry, I do not understand that command. Please type /start to get started');
+                }else if(messageText.toLocaleLowerCase().includes('subscriptions')){
+                        // PLAN ONE
+                            const planOne = `
+                            $144
+                            \n 15,000 TETHER, you get 15,000 USDT daily on the software
+                            \nValidity: 24 hours
+                            `
+                            const planOneButton = {
+                                reply_markup: JSON.stringify({
+                                    inline_keyboard: [
+                                        [{ text: 'Proceed', callback_data: 'planOneProceed'}]
+                                    ]
+                                })
+                            }
+
+                            // PLAN TWO
+                            const planTwo = `
+                            $222
+                            \n 5,000 TETHER, you get 5,000 USDT daily on the software
+                            \nValidity: 60 days
+                            `
+                            const planTwoButton = {
+                                reply_markup: JSON.stringify({
+                                    inline_keyboard: [
+                                        [{ text: 'Proceed', callback_data: 'planTwoProceed'}]
+                                    ]
+                                })
+                            }
+
+                            // PLAN THREE
+                            const planThree = `
+                            $322
+                            \n 10,000 TETHER, you get 10,000 USDT daily on the software
+                            \nValidity: 60 days
+                            `
+                            const planThreeButton = {
+                                reply_markup: JSON.stringify({
+                                    inline_keyboard: [
+                                        [{ text: 'Proceed', callback_data: 'planThreeProceed'}]
+                                    ]
+                                })
+                            }
+
+                            // PLAN FOUR
+                            const planFour = `
+                            $722
+                            \n 50,000 TETHER, you get 50,000 USDT daily on the software
+                            \nValidity: 60 days
+                            `
+                            const planFourButton = {
+                                reply_markup: JSON.stringify({
+                                    inline_keyboard: [
+                                        [{ text: 'Proceed', callback_data: 'planFourProceed'}]
+                                    ]
+                                })
+                            }
+
+                            bot.sendMessage(chatId, planOne, planOneButton)
+                            bot.sendMessage(chatId, planTwo, planTwoButton)
+                            bot.sendMessage(chatId, planThree, planThreeButton)
+                            bot.sendMessage(chatId, planFour, planFourButton)
+                } else if(messageText.toLocaleLowerCase().includes('scam')){
+                    bot.deleteMessage(chatId, msg.message_id)
+                    bot.sendMessage(chatId, 'Please do not use that word in this group chat. Thank you')
                 } else {
                     bot.sendMessage(
                         chatId,
                         `Hello, I am ${botUsername} Bot. I noticed you mentioned me.`
                     );
                 }
+            }
+            if(messageText.toLocaleLowerCase().includes('scam')){
+                bot.deleteMessage(chatId, msg.message_id)
+                    bot.sendMessage(chatId, 'Please do not use that word in this group chat. Thank you')
             }
         } else if (chatType === 'private') {
             // Private chat handling
@@ -256,11 +328,11 @@ bot.on('message', (msg) => {
                 `Hello, I am ${botUsername} Bot. How can I assist you?`
             );
         }
-    } else {
+    }else {
         // Handle non-text messages (e.g., photos, stickers)
         bot.sendMessage(
             chatId,
-            `I welcome you to this group, please refer to me or tag mes for assistance.`
+            `I welcome you to this group, please refer to me or tag me for assistance.`
         );
     }
 });
