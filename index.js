@@ -1,8 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api')
 const env = require('dotenv')
-const express = require('express')
-const app = express()
-const PORT = process.env.PORT || 3000
+// const express = require('express')
+// const app = express()
+// const PORT = process.env.PORT || 3000
 
 
 env.config()
@@ -11,6 +11,8 @@ const TOKEN = process.env.BOT_TOKEN
 const bot = new TelegramBot(TOKEN, {
     polling : true
 })
+
+    // const prohibitedWords = ['']
 
 
 // THE START FUNCTION
@@ -224,6 +226,53 @@ bot.on('callback_query', (query) => {
     }
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
-})
+
+// CAPTURE THE MESSAGE ON GROUP CHATS
+bot.on('message', (msg) => {
+    const chatId = msg.chat.id;
+    const chatType = msg.chat.type; 
+    const botUsername = '@Fame7bot'; 
+
+    // Check if the message contains text
+    if (msg.text) {
+        const messageText = msg.text;
+
+        if (chatType === 'group' || chatType === 'supergroup') {
+            // Check if the bot is mentioned
+            if (messageText.includes(botUsername)) {
+                if (messageText.toLowerCase().includes('hi')) {
+                    bot.sendMessage(chatId, 'Hello, Welcome to TLA USDT and BTC Bot 💙');
+                } else {
+                    bot.sendMessage(
+                        chatId,
+                        `Hello, I am ${botUsername} Bot. I noticed you mentioned me.`
+                    );
+                }
+            }
+        } else if (chatType === 'private') {
+            // Private chat handling
+            bot.sendMessage(
+                chatId,
+                `Hello, I am ${botUsername} Bot. How can I assist you?`
+            );
+        }
+    } else {
+        // Handle non-text messages (e.g., photos, stickers)
+        bot.sendMessage(
+            chatId,
+            `I welcome you to this group, please refer to me or tag mes for assistance.`
+        );
+    }
+});
+
+
+
+
+
+
+
+
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`)
+// }) 
