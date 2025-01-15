@@ -51,7 +51,7 @@ bot.on('callback_query', (query) => {
         const trialVersion = {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{ text: 'Check Trial Version', callback_data: 'trialVersion' }]
+                    [{ text: 'Check Trial Version', callback_data: 'trialVersion' }, { text: 'Text the admin', url: 'https://t.me/tlafiles' }]
                 ]
             })
         }
@@ -139,13 +139,27 @@ bot.on('callback_query', (query) => {
         \nThis Demo allows you to experience the reliability and functionality of our software before committing to the full paid version.
         \nThis Demo comes with a one-time use license.
         \nThis Demo is limited to sending 3 USDT per day.
+
+        \nPlease navigate to the link below to download the trial version of the software.
         `
-            bot.sendMessage(chatId, trialVersionMessage)
+
+        const trialVersionOptions = {
+            reply_markup: JSON.stringify({
+                inline_keyboard: [
+                    [{ text: 'Download File', url: 'https://www.tlausdtfiles.pro'}]
+                ]
+            })
+        }
+            bot.sendMessage(chatId, trialVersionMessage, trialVersionOptions)
     }else if(data === 'askedQuestions') {
         const askedQuestions = `
         FAQs:
         \nQ: What is USDT?
         \nA: USDT is a stablecoin that is pegged to the US dollar.
+        \nQ: I Don't Have a Laptop?
+        \nA: We can send you any amount you want. Just let us know the amount you want and we will send it to you. minimum of 5,000 usdt and maximum of 50,000 per day.
+        \nQ: Does it Work on Windows or Mac?
+        \nA: Yes, it works on both Windows and Mac. It can be used on any of the operating systems.
         \nQ: Is USDT flash transferrable?
         \nA: Yes 😊, you can transfer to any wallet using your preferred network. ERC20, BEP20 or TRC20..
         \nQ: Can it be used for P2P?
@@ -226,7 +240,7 @@ bot.on('callback_query', (query) => {
     }
 })
 
-
+// FOR GROUP CHATS
 // CAPTURE THE MESSAGE ON GROUP CHATS
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
@@ -240,10 +254,17 @@ bot.on('message', (msg) => {
         if (chatType === 'group' || chatType === 'supergroup') {
             // Check if the bot is mentioned
             if (messageText.includes(botUsername)) {
-                if (messageText.toLowerCase().includes('hi')) {
+                if (messageText.toLowerCase().includes('hi') || messageText.toLowerCase().includes('hello')) {
                     bot.sendMessage(chatId, 'Hello, Welcome to TLA USDT and BTC Bot 💙');
                 }else if(messageText.toLocaleLowerCase().includes('help')) {
-                    bot.sendMessage(chatId, 'How can I assist you?');
+                    const helpOptions = {
+                        reply_markup: JSON.stringify({
+                            inline_keyboard: [
+                                [{ text: 'Help', callback_data: 'help' }],
+                            ]
+                        })
+                    }
+                    bot.sendMessage(chatId, 'How can I assist you? 😊 or checkout the available options', helpOptions);
                 }else if(messageText.toLocaleLowerCase().includes('begin')) {
                     bot.sendMessage(chatId, 'I am sorry, I do not understand that command. Please type /start to get started');
                 }else if(messageText.toLocaleLowerCase().includes('subscriptions')){
@@ -307,32 +328,29 @@ bot.on('message', (msg) => {
                             bot.sendMessage(chatId, planTwo, planTwoButton)
                             bot.sendMessage(chatId, planThree, planThreeButton)
                             bot.sendMessage(chatId, planFour, planFourButton)
-                } else if(messageText.toLocaleLowerCase().includes('scam')){
-                    bot.deleteMessage(chatId, msg.message_id)
-                    bot.sendMessage(chatId, 'Please do not use that word in this group chat. Thank you')
-                } else {
+                }else {
                     bot.sendMessage(
                         chatId,
                         `Hello, I am ${botUsername} Bot. I noticed you mentioned me.`
                     );
                 }
             }
-            if(messageText.toLocaleLowerCase().includes('scam')){
+            if(messageText.toLocaleLowerCase().includes('scam') || messageText.toLocaleLowerCase().includes('fraud')){
                 bot.deleteMessage(chatId, msg.message_id)
-                    bot.sendMessage(chatId, 'Please do not use that word in this group chat. Thank you')
+                    bot.sendMessage(chatId, `Please do not use the word '${msg.text}' in this group chat. Thank you`)
             }
         } else if (chatType === 'private') {
             // Private chat handling
-            bot.sendMessage(
-                chatId,
-                `Hello, I am ${botUsername} Bot. How can I assist you?`
-            );
+            if(messageText.toLocaleLowerCase().includes('scam')){
+                bot.deleteMessage(chatId, msg.message_id)
+                    bot.sendMessage(chatId, `Please do not use the word '${msg.text}' in this chat. Thank you`)
+            }
         }
     }else {
         // Handle non-text messages (e.g., photos, stickers)
         bot.sendMessage(
             chatId,
-            `I welcome you to this group, please refer to me or tag me for assistance.`
+            `I welcome you to TLA USDT and BTC Bot 💙. Please refer to me or tag me for assistance.`
         );
     }
 });
