@@ -12,8 +12,6 @@ const bot = new TelegramBot(TOKEN, {
     polling : true
 })
 
-    // const prohibitedWords = ['']
-
 
 // THE START FUNCTION
 bot.onText(/\/start/, (msg) => {
@@ -51,7 +49,8 @@ bot.on('callback_query', (query) => {
         const trialVersion = {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{ text: 'Check Trial Version', callback_data: 'trialVersion' }, { text: 'Text the admin', url: 'https://t.me/tlafiles' }]
+                    [{ text: 'Check Trial Version', callback_data: 'trialVersion' }, { text: 'Text the admin', url: 'https://t.me/tlafiles' }],
+                    [{ text: 'Subscriptions', callback_data: 'subscriptions' }]
                 ]
             })
         }
