@@ -1,8 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api')
 const env = require('dotenv')
-// const express = require('express')
-// const app = express()
-// const PORT = process.env.PORT || 3000
+const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
 
 
 env.config()
@@ -11,6 +11,11 @@ const TOKEN = process.env.BOT_TOKEN
 const bot = new TelegramBot(TOKEN, {
     polling : true
 })
+
+app.get('/', (req, res) => {
+    res.send('TLA USDT and BTC Bot 💙 is running.')
+}
+)
 
 
 // THE START FUNCTION
@@ -126,9 +131,16 @@ bot.on('callback_query', (query) => {
         }
 
         bot.sendMessage(chatId, planOne, planOneButton)
-        bot.sendMessage(chatId, planTwo, planTwoButton)
-        bot.sendMessage(chatId, planThree, planThreeButton)
-        bot.sendMessage(chatId, planFour, planFourButton)
+    .then(() => bot.sendMessage(chatId, planTwo, planTwoButton))
+    .then(() => bot.sendMessage(chatId, planThree, planThreeButton))
+    .then(() => bot.sendMessage(chatId, planFour, planFourButton))
+    .catch((error) => console.error(error));
+
+
+        // bot.sendMessage(chatId, planOne, planOneButton)
+        // bot.sendMessage(chatId, planTwo, planTwoButton)
+        // bot.sendMessage(chatId, planThree, planThreeButton)
+        // bot.sendMessage(chatId, planFour, planFourButton)
 
     }else if(data === 'trialVersion') {
 
@@ -362,6 +374,6 @@ bot.on('message', (msg) => {
 
 
 
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`)
-// }) 
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+}) 
