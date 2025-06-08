@@ -76,7 +76,7 @@ bot.on('callback_query', (query) => {
 
         // PLAN ONE
         const planOne = `
-        $399
+        $250
         \n 15,000 TETHER, you get 15,000 USDT daily on the software
         \nValidity: 24 hours
         `
@@ -90,8 +90,8 @@ bot.on('callback_query', (query) => {
 
         // PLAN TWO
         const planTwo = `
-        $250
-        \n 5,000 TETHER, you get 15,000 USDT daily on the software
+        $399
+        \n 10,000 TETHER, you get 10,000 USDT daily on the software
         \nValidity: 60 days
         `
         const planTwoButton = {
@@ -276,7 +276,7 @@ bot.on('message', (msg) => {
                 }else if(messageText.toLocaleLowerCase().includes('subscriptions')){
                         // PLAN ONE
                             const planOne = `
-                            $399
+                            $250
                             \n 15,000 TETHER, you get 15,000 USDT daily on the software
                             \nValidity: 24 hours
                             `
@@ -290,8 +290,8 @@ bot.on('message', (msg) => {
 
                             // PLAN TWO
                             const planTwo = `
-                            $250
-                            \n 50,000 TETHER, you get 50,000 USDT daily on the software
+                            $399
+                            \n 10,000 TETHER, you get 10,000 USDT daily on the software
                             \nValidity: 60 days
                             `
                             const planTwoButton = {
