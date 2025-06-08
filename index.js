@@ -32,7 +32,7 @@ bot.onText(/\/start/, (msg) => {
         })
     }
 
-    bot.sendMessage(chatId, 'Welcome to TLA USDT and BTC Bot 💙', options)
+    bot.sendMessage(chatId, 'Welcome to TFL USDT and BTC Bot 💙', options)
 })
 
 // THE HELP FUNCTION
@@ -54,7 +54,7 @@ bot.on('callback_query', (query) => {
         const trialVersion = {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{ text: 'Check Trial Version', callback_data: 'trialVersion' }, { text: 'Text the admin', url: 'https://t.me/tlafiles' }],
+                    [{ text: 'Check Test Version', callback_data: 'trialVersion' }, { text: 'Text the admin', url: 'https://t.me/tlafiles' }],
                     [{ text: 'Subscriptions', callback_data: 'subscriptions' }]
                 ]
             })
@@ -65,7 +65,7 @@ bot.on('callback_query', (query) => {
     }else if(data === 'about') {
         const aboutMessage = `
         ABOUT:
-        \nWelcome to TLAUSDT, your premier destination for USDT flashing.
+        \nWelcome to TFLUSDT, your premier destination for USDT flashing.
         \nWe are here to help you get started with USDT flashing.
         \nWe offer a variety of license plans to help you get started.
         `
@@ -76,7 +76,7 @@ bot.on('callback_query', (query) => {
 
         // PLAN ONE
         const planOne = `
-        $144
+        $399
         \n 15,000 TETHER, you get 15,000 USDT daily on the software
         \nValidity: 24 hours
         `
@@ -90,8 +90,8 @@ bot.on('callback_query', (query) => {
 
         // PLAN TWO
         const planTwo = `
-        $222
-        \n 5,000 TETHER, you get 5,000 USDT daily on the software
+        $250
+        \n 5,000 TETHER, you get 15,000 USDT daily on the software
         \nValidity: 60 days
         `
         const planTwoButton = {
@@ -104,8 +104,8 @@ bot.on('callback_query', (query) => {
 
         // PLAN THREE
         const planThree = `
-        $322
-        \n 10,000 TETHER, you get 10,000 USDT daily on the software
+        $800
+        \n 50,000 TETHER, you get 50,000 USDT daily on the software
         \nValidity: 60 days
         `
         const planThreeButton = {
@@ -118,8 +118,8 @@ bot.on('callback_query', (query) => {
 
         // PLAN FOUR
         const planFour = `
-        $722
-        \n 50,000 TETHER, you get 50,000 USDT daily on the software
+        $2,000
+        \n 500,000 TETHER, you get 500,000 USDT daily on the software
         \nValidity: 60 days
         `
         const planFourButton = {
@@ -137,11 +137,6 @@ bot.on('callback_query', (query) => {
     .catch((error) => console.error(error));
 
 
-        // bot.sendMessage(chatId, planOne, planOneButton)
-        // bot.sendMessage(chatId, planTwo, planTwoButton)
-        // bot.sendMessage(chatId, planThree, planThreeButton)
-        // bot.sendMessage(chatId, planFour, planFourButton)
-
     }else if(data === 'trialVersion') {
 
         const trialVersionMessage = `
@@ -157,7 +152,7 @@ bot.on('callback_query', (query) => {
         const trialVersionOptions = {
             reply_markup: JSON.stringify({
                 inline_keyboard: [
-                    [{ text: 'Download File', url: 'https://www.tlausdtfiles.pro'}]
+                    [{ text: 'Download File', url: 'https://mega.nz/file/xMZwgagY#'}]
                 ]
             })
         }
@@ -190,8 +185,8 @@ bot.on('callback_query', (query) => {
         bot.sendMessage(chatId, askedQuestions, askedQuestionsButton)
     }else if(data === 'planOneProceed'){
         const proceedOne = `
-        Please make a payment of $144 to
-        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        Please make a payment of $399 to
+        \TGDLvHaUBJL4dAbWEDrFFJjXoD9TFdothn
         \nAfter payment, Please Confirm Below.
         `
         const proButton = {
@@ -205,8 +200,8 @@ bot.on('callback_query', (query) => {
         bot.sendMessage(chatId, proceedOne, proButton)
     }else if(data === 'planTwoProceed'){
         const proceedTwo = `
-        Please make a payment of $222 to
-        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        Please make a payment of $250 to
+        \TGDLvHaUBJL4dAbWEDrFFJjXoD9TFdothn
         \nAfter payment, Please Confirm Below.
         `
         const proButton = {
@@ -220,8 +215,8 @@ bot.on('callback_query', (query) => {
         bot.sendMessage(chatId, proceedTwo, proButton)
     }else if(data === 'planThreeProceed'){
         const proceedThree = `
-        Please make a payment of $322 to
-        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        Please make a payment of $800 to
+        \TGDLvHaUBJL4dAbWEDrFFJjXoD9TFdothn
         \nAfter payment, Please Confirm Below.
         `
         const proButton = {
@@ -235,8 +230,8 @@ bot.on('callback_query', (query) => {
         bot.sendMessage(chatId, proceedThree, proButton)
     }else if(data === 'planFourProceed'){
         const proceedFour = `
-        Please make a payment of $722 to
-        \nTPLtfbPgpzEsm3h9LgiAM43wdZTjEypALk
+        Please make a payment of $2,000 to
+        \TGDLvHaUBJL4dAbWEDrFFJjXoD9TFdothn
         \nAfter payment, Please Confirm Below.
         `
         const proButton = {
@@ -266,7 +261,7 @@ bot.on('message', (msg) => {
             // Check if the bot is mentioned
             if (messageText.includes(botUsername)) {
                 if (messageText.toLowerCase().includes('hi') || messageText.toLowerCase().includes('hello')) {
-                    bot.sendMessage(chatId, 'Hello, Welcome to TLA USDT and BTC Bot 💙');
+                    bot.sendMessage(chatId, 'Hello, Welcome to TFL USDT and BTC Bot 💙');
                 }else if(messageText.toLocaleLowerCase().includes('help')) {
                     const helpOptions = {
                         reply_markup: JSON.stringify({
@@ -281,7 +276,7 @@ bot.on('message', (msg) => {
                 }else if(messageText.toLocaleLowerCase().includes('subscriptions')){
                         // PLAN ONE
                             const planOne = `
-                            $144
+                            $399
                             \n 15,000 TETHER, you get 15,000 USDT daily on the software
                             \nValidity: 24 hours
                             `
@@ -295,8 +290,8 @@ bot.on('message', (msg) => {
 
                             // PLAN TWO
                             const planTwo = `
-                            $222
-                            \n 5,000 TETHER, you get 5,000 USDT daily on the software
+                            $250
+                            \n 50,000 TETHER, you get 50,000 USDT daily on the software
                             \nValidity: 60 days
                             `
                             const planTwoButton = {
@@ -309,8 +304,8 @@ bot.on('message', (msg) => {
 
                             // PLAN THREE
                             const planThree = `
-                            $322
-                            \n 10,000 TETHER, you get 10,000 USDT daily on the software
+                            $800
+                            \n 50,000 TETHER, you get 50,000 USDT daily on the software
                             \nValidity: 60 days
                             `
                             const planThreeButton = {
@@ -323,8 +318,8 @@ bot.on('message', (msg) => {
 
                             // PLAN FOUR
                             const planFour = `
-                            $722
-                            \n 50,000 TETHER, you get 50,000 USDT daily on the software
+                            $2,000
+                            \n 500,000 TETHER, you get 500,000 USDT daily on the software
                             \nValidity: 60 days
                             `
                             const planFourButton = {
